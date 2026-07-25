@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Gestion Stock Carte",
+    "slug": "mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.mobile"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-image",
+      "@clerk/expo",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "L'application a besoin d'accéder à vos photos pour ajouter une image de produit.",
+          "cameraPermission": "L'application a besoin d'accéder à votre appareil photo pour prendre une photo de produit."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#5E81AC"
+        }
+      ],
+      [
+  "expo-splash-screen",
+  {
+    "image": "./assets/splash-icon.png",
+    "imageWidth": 200,
+    "resizeMode": "contain",
+    "backgroundColor": "#ECEFF4"
+  }
+]
+    ]
+  }
+}

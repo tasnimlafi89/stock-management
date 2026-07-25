@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# next.js
+gestion/.next
+gestion/out
+
+# expo / android native
+mobile/.expo
+mobile/android
+mobile/ios
+
+# env files — never commit real keys
+.env
+.env.local
+.env*.local
+
+# database
+gestion/*.db
+gestion/*.db-journal
+
+# generated prisma client
+gestion/src/generated/prisma
+
+# misc
+.DS_Store
+*.log

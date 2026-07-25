@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Association {
+  id             String         @id @default(uuid())
+  name           String
+  email          String         @unique
+  pushToken      String?
+  products       Product[]
+  categories     Category[]
+  transactions   Transaction[]
+  favorites      Favorite[]
+  basketItems    BasketItem[]   @relation("BasketOwner")
+  ordersAsBuyer  Order[]        @relation("BuyerOrders")
+  ordersAsSeller Order[]        @relation("SellerOrders")
+  notifications  Notification[]
+}
+
+model Product {
+  id              String        @id @default(uuid())
+  name            String
+  description     String
+  price           Float
+  quantity        Int           @default(0)
+  storageLocation String?
+  owner           String?
+  imageUrl        String
+  categoryId      String
+  associationId   String?
+  category        Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  association     Association?  @relation(fields: [associationId], references: [id])
+  transactions    Transaction[]
+  favorites       Favorite[]
+  basketItems     BasketItem[]
+  orders          Order[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Category {
+  id            String       @id @default(uuid())
+  name          String
+  description   String?
+  associationId String?
+  association   Association? @relation(fields: [associationId], references: [id])
+  products      Product[]
+}
+
+model Transaction {
+  id            String       @id @default(uuid())
+  type          String
+  quantity      Int
+  productId     String
+  associationId String?
+  product       Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  association   Association? @relation(fields: [associationId], references: [id])
+  createdAt     DateTime     @default(now())
+}
+
+model Favorite {
+  id            String      @id @default(uuid())
+  associationId String
+  productId     String
+  association   Association @relation(fields: [associationId], references: [id], onDelete: Cascade)
+  product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@unique([associationId, productId])
+}
+
+model BasketItem {
+  id            String      @id @default(uuid())
+  associationId String
+  productId     String
+  quantity      Int         @default(1)
+  association   Association @relation("BasketOwner", fields: [associationId], references: [id], onDelete: Cascade)
+  product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@unique([associationId, productId])
+}
+
+model Order {
+  id         String      @id @default(uuid())
+  buyerId    String
+  sellerId   String
+  productId  String
+  quantity   Int
+  totalPrice Float
+  status     String      @default("pending")
+  buyer      Association @relation("BuyerOrders", fields: [buyerId], references: [id], onDelete: Cascade)
+  seller     Association @relation("SellerOrders", fields: [sellerId], references: [id], onDelete: Cascade)
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model Notification {
+  id            String      @id @default(uuid())
+  associationId String
+  message       String
+  read          Boolean     @default(false)
+  association   Association @relation(fields: [associationId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+}
