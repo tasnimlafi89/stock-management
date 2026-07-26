@@ -23,6 +23,7 @@ import DashboardScreen from './src/screens/DashboardScreen'
 import * as SplashScreen from 'expo-splash-screen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import OnboardingScreen from './src/screens/OnboardingScreen'
+import NetworkBanner from './src/components/NetworkBanner'
 
 
 SplashScreen.preventAutoHideAsync()
@@ -226,16 +227,24 @@ function AppNavigator() {
     }
 
     if (!isSignedIn) {
-        return <AuthView mode="signInOrUp" />
-    }
+    return (
+        <View style={{ flex: 1 }}>
+            <NetworkBanner />
+            <AuthView mode="signInOrUp" />
+        </View>
+    )
+}
 
     return (
-        <NavigationContainer>
-            <RootStack.Navigator screenOptions={{ headerShown: false }}>
-                <RootStack.Screen name="MainTabs" component={MainTabs} />
-                <RootStack.Screen name="ProductDetail" component={ProductDetailScreen} options={{ headerShown: true, title: '' }} />
-            </RootStack.Navigator>
-        </NavigationContainer>
+        <View style={{ flex: 1 }}>
+            <NetworkBanner />
+            <NavigationContainer>
+                <RootStack.Navigator screenOptions={{ headerShown: false }}>
+                    <RootStack.Screen name="MainTabs" component={MainTabs} />
+                    <RootStack.Screen name="ProductDetail" component={ProductDetailScreen} options={{ headerShown: true, title: '' }} />
+                </RootStack.Navigator>
+            </NavigationContainer>
+        </View>
     )
 }
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
