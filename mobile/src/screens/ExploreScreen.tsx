@@ -48,7 +48,7 @@ export default function ExploreScreen({ navigation }: any) {
             console.error(e)
         }
     }
-    
+
     const handleRefresh = async () => {
         setRefreshing(true)
         await load()

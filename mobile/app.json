@@ -11,13 +11,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#5E81AC",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.mobile"
+      "package": "com.anonymous.mobile",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -48,14 +52,19 @@
         }
       ],
       [
-  "expo-splash-screen",
-  {
-    "image": "./assets/splash-icon.png",
-    "imageWidth": 200,
-    "resizeMode": "contain",
-    "backgroundColor": "#ECEFF4"
-  }
-]
-    ]
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ECEFF4"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "33de4f4e-ce36-4a5b-85b1-0b10d426cd1f"
+      }
+    }
   }
 }

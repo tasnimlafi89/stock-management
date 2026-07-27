@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545756683180",
+    "project_id": "gestion-stock-carte",
+    "storage_bucket": "gestion-stock-carte.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545756683180:android:4cebf6bbb147cc4a197809",
+        "android_client_info": {
+          "package_name": "com.anonymous.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW_sTB5-T8i51VO9pml8O1EH9W-PS8s8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

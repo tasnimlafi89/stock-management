@@ -8,7 +8,7 @@ import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigat
 import { ClerkProvider, useAuth } from '@clerk/expo'
 import { tokenCache } from '@clerk/expo/token-cache'
 import { AuthView, UserButton } from '@clerk/expo/native'
-import { Bell, Compass, Heart, LayoutDashboard, ShoppingBasket, ShoppingCart } from 'lucide-react-native'
+import { Bell, Heart, LayoutDashboard, Search, ShoppingBasket, ShoppingCart } from 'lucide-react-native'
 import { registerForPushNotificationsAsync } from './src/lib/pushNotifications'
 import ExploreScreen from './src/screens/ExploreScreen'
 import BasketScreen from './src/screens/BasketScreen'
@@ -131,10 +131,10 @@ function MainTabs() {
                     const focusedRoute = getFocusedRouteNameFromRoute(route) ?? 'Dashboard'
                     const isOnDashboard = focusedRoute === 'Dashboard'
                     return {
-                        tabBarLabel: isOnDashboard ? 'Explorer' : 'Accueil',
+                        tabBarLabel: isOnDashboard ? 'Recherche' : 'Accueil',
                         tabBarIcon: ({ color, size }) =>
                             isOnDashboard
-                                ? <Compass color={color} size={size} />
+                                ? <Search color={color} size={size} />
                                 : <LayoutDashboard color={color} size={size} />,
                     }
                 }}
@@ -227,13 +227,13 @@ function AppNavigator() {
     }
 
     if (!isSignedIn) {
-    return (
-        <View style={{ flex: 1 }}>
-            <NetworkBanner />
-            <AuthView mode="signInOrUp" />
-        </View>
-    )
-}
+        return (
+            <View style={{ flex: 1 }}>
+                <NetworkBanner />
+                <AuthView mode="signInOrUp" />
+            </View>
+        )
+    }
 
     return (
         <View style={{ flex: 1 }}>

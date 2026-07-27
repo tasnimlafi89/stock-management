@@ -1,6 +1,6 @@
 "use client"
 import { Show, SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
-import { Bell, Clipboard, Heart, HelpingHand, ListTree, Menu, Package, PackagePlus, Search, ShoppingBasket, ShoppingCart, Tags, Warehouse, X } from 'lucide-react'
+import { Bell, Clipboard, Heart, LayoutDashboard, ListTree, Menu, Package, PackagePlus, Search, ShoppingBasket, ShoppingCart, Tags, Warehouse, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -18,6 +18,7 @@ const NavBar = () => {
     const [showNotifications, setShowNotifications] = useState(false)
 
     const navLinks = [
+        { href: "/", label: "Tableau de bord", icon: LayoutDashboard },
         { href: "/explore", label: "Recherche", icon: Search },
         { href: "/category", label: "Catégories", icon: Tags },
         { href: "/products", label: "Produits", icon: Package },
