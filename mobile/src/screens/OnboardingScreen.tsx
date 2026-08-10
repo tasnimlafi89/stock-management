@@ -8,16 +8,12 @@ const { width } = Dimensions.get('window')
 const slides = [
     {
         image: require('../../assets/onboarding-1.png'),
-        title: 'Gérez votre stock',
     },
     {
         image: require('../../assets/onboarding-2.png'),
-        title: 'Explorez et échangez',
     },
     {
         image: require('../../assets/onboarding-3.png'),
-        title: 'Suivez vos ventes',
-        descrption: "Consultez votre tableau de bord pour voir vos meilleures ventes et votre stock faible.",
     },
 ]
 
@@ -39,7 +35,7 @@ export default function OnboardingScreen({ onDone }: { onDone: () => void }) {
     }
 
     return (
-        <View className="flex-1 bg-base100">
+        <View className="flex-1 bg-[#F6F9FE]">
             <PagerView
                 ref={pagerRef}
                 style={{ flex: 1 }}
@@ -48,8 +44,7 @@ export default function OnboardingScreen({ onDone }: { onDone: () => void }) {
             >
                 {slides.map((slide, index) => (
                     <View key={index} className="flex-1 items-center justify-center px-8">
-                        <Image source={slide.image} style={{ width: width * 0.75, height: width * 0.75 }} resizeMode="contain" />
-                        <Text className="text-2xl font-bold text-baseContent mt-8 text-center">{slide.title}</Text>
+                        <Image source={slide.image} style={{ width: width , height: width}} resizeMode="contain" />
                     </View>
                 ))}
             </PagerView>
@@ -61,7 +56,7 @@ export default function OnboardingScreen({ onDone }: { onDone: () => void }) {
                         className="h-2 rounded-full"
                         style={{
                             width: page === index ? 24 : 8,
-                            backgroundColor: page === index ? '#5E81AC' : '#F6F9FE',
+                            backgroundColor: page === index ? '#5E81AC' : '#d9dde3',
                         }}
                     />
                 ))}
