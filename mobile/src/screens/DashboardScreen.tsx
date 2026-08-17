@@ -109,7 +109,7 @@ export default function DashboardScreen() {
                     stats.lowStockProducts.map((p: any) => (
                         <View key={p.id} className="flex-row items-center gap-3 mb-2">
                             {p.imageUrl ? (
-                                <Image source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${p.imageUrl}` }} className="w-8 h-8 rounded-lg" />
+                                <Image source={{ uri: p.imageUrl }} className="w-8 h-8 rounded-lg" />
                             ) : null}
                             <Text className="flex-1 text-sm text-baseContent">{p.name}</Text>
                             <Text className="text-xs text-warning font-semibold">{p.quantity} restant(s)</Text>
@@ -126,7 +126,7 @@ export default function DashboardScreen() {
                     stats.slowMovers.map((p: any) => (
                         <View key={p.productId} className="flex-row items-center gap-3 mb-2">
                             {p.imageUrl ? (
-                                <Image source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${p.imageUrl}` }} className="w-8 h-8 rounded-lg" />
+                                <Image source={{ uri: p.imageUrl }} className="w-8 h-8 rounded-lg" />
                             ) : null}
                             <Text className="flex-1 text-sm text-baseContent">{p.name}</Text>
                             <Text className="text-xs text-neutral">{p.quantity} en stock</Text>

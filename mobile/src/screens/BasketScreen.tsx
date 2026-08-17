@@ -75,7 +75,7 @@ export default function BasketScreen() {
                             <View className="flex-row items-center gap-3 bg-white border border-base300 rounded-2xl p-3">
                                 {item.imageUrl ? (
                                     <Image
-                                        source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${item.imageUrl}` }}
+                                        source={{ uri: item.imageUrl }}
                                         className="w-14 h-14 rounded-xl"
                                     />
                                 ) : null}

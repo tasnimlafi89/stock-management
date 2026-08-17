@@ -90,7 +90,7 @@ export default function ActivityScreen() {
                             return (
                                 <View className="flex-row items-center gap-3 bg-white border border-base300 rounded-2xl p-3">
                                     {item.imageUrl ? (
-                                        <Image source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${item.imageUrl}` }} className="w-14 h-14 rounded-xl" />
+                                        <Image source={{ uri: item.imageUrl }} className="w-14 h-14 rounded-xl" />
                                     ) : null}
                                     <View className="flex-1">
                                         <Text className="font-bold text-baseContent">{item.productName}</Text>
@@ -116,7 +116,7 @@ export default function ActivityScreen() {
                             <View className="bg-white border border-base300 rounded-2xl p-3">
                                 <View className="flex-row items-center gap-3 mb-2">
                                     {item.imageUrl ? (
-                                        <Image source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${item.imageUrl}` }} className="w-14 h-14 rounded-xl" />
+                                        <Image source={{ uri: item.imageUrl }} className="w-14 h-14 rounded-xl" />
                                     ) : null}
                                     <View className="flex-1">
                                         <Text className="font-bold text-baseContent">{item.productName}</Text>

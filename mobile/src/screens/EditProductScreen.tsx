@@ -122,7 +122,7 @@ export default function EditProductScreen({ route, navigation }: any) {
                 <TouchableOpacity onPress={pickImage} className="w-full h-40 bg-base200 rounded-2xl items-center justify-center mb-4 overflow-hidden">
                     {(newImageUri || existingImageUrl) ? (
                         <Image
-                            source={{ uri: newImageUri || `${process.env.EXPO_PUBLIC_API_URL}${existingImageUrl}` }}
+                            source={{ uri: newImageUri || existingImageUrl }}
                             className="w-full h-full"
                             resizeMode="cover"
                         />

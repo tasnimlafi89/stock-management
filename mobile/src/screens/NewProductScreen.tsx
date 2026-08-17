@@ -55,6 +55,10 @@ export default function NewProductScreen({ navigation }: any) {
             Alert.alert('Champs manquants', 'Nom, prix et catégorie sont requis.')
             return
         }
+        if (!imageUri) {
+            Alert.alert('Image manquante', 'Veuillez ajouter une image du produit.')
+            return
+        }
         setLoading(true)
         try {
             let imageUrl = ''
@@ -121,7 +125,7 @@ export default function NewProductScreen({ navigation }: any) {
                     {imageUri ? (
                         <Image source={{ uri: imageUri }} className="w-full h-full" resizeMode="cover" />
                     ) : (
-                        <Text className="text-neutral">Aucune image sélectionnée</Text>
+                        <Text className="text-neutral">Aucune image sélectionnée *</Text>
                     )}
                 </TouchableOpacity>
 

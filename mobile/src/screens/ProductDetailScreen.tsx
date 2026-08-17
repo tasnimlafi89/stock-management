@@ -34,7 +34,7 @@ export default function ProductDetailScreen({ route, navigation }: any) {
                 <View className="w-full h-56 bg-base200 rounded-2xl overflow-hidden mb-4">
                     {product.imageUrl ? (
                         <Image
-                            source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${product.imageUrl}` }}
+                            source={{ uri: product.imageUrl }}
                             className="w-full h-full"
                             resizeMode="cover"
                         />

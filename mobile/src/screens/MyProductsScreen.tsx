@@ -173,7 +173,7 @@ export default function MyProductsScreen({ navigation }: any) {
                     >
                         {item.imageUrl ? (
                             <Image
-                                source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${item.imageUrl}` }}
+                                source={{ uri: item.imageUrl }}
                                 className="w-14 h-14 rounded-xl"
                             />
                         ) : null}

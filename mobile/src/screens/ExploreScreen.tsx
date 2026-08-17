@@ -109,7 +109,7 @@ export default function ExploreScreen({ navigation }: any) {
                             <View className="w-full h-32 bg-base200">
                                 {item.imageUrl ? (
                                     <Image
-                                        source={{ uri: `${process.env.EXPO_PUBLIC_API_URL}${item.imageUrl}` }}
+                                        source={{ uri: item.imageUrl }}
                                         className="w-full h-full"
                                         resizeMode="cover"
                                     />
