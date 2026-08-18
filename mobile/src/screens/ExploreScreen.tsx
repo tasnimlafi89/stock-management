@@ -104,12 +104,8 @@ export default function ExploreScreen({ navigation }: any) {
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             className="flex-1 bg-white rounded-2xl border border-base300 overflow-hidden"
-                            onPress={() => navigation.navigate('ProductDetail', { product: item })}>
-                            {item.quantity === 0 ? (
-                                <View className="absolute bottom-2 left-2 bg-red-500 rounded-full px-2 py-1">
-                                    <Text className="text-white text-xs font-semibold">Stock épuisé</Text>
-                                </View>
-                            ) : null}
+                            onPress={() => navigation.navigate('ProductDetail', { product: item })}
+                        >
                             <View className="w-full h-32 bg-base200">
                                 {item.imageUrl ? (
                                     <Image
@@ -128,6 +124,11 @@ export default function ExploreScreen({ navigation }: any) {
                                         fill={favoriteIds.has(item.id) ? "#BF616A" : "none"}
                                     />
                                 </TouchableOpacity>
+                                {item.quantity === 0 ? (
+                                    <View className="absolute top-2 left-2 bg-red-500 rounded-full px-2 py-1">
+                                        <Text className="text-white text-xs font-semibold">Stock épuisé</Text>
+                                    </View>
+                                ) : null}
                             </View>
                             <View className="p-3">
                                 <Text className="font-bold text-baseContent" numberOfLines={1}>{item.name}</Text>

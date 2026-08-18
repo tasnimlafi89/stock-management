@@ -13,11 +13,6 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, onToggleFavorite }) => {
     return (
         <div className="card bg-base-100 border-2 border-base-200 rounded-3xl overflow-hidden">
-            {product.quantity === 0 ? (
-    <span className="badge badge-error absolute bottom-2 left-2 text-white">
-        Stock épuisé
-    </span>
-) : null}
             <div className="relative w-full h-40 bg-base-200">
                 {product.imageUrl ? (
                     <Image
@@ -38,6 +33,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, onToggle
                         className={`w-4 h-4 ${isFavorite ? "fill-red-500 text-red-500" : "text-base-content"}`}
                     />
                 </button>
+                {product.quantity === 0 ? (
+                    <span className="badge badge-error absolute top-2 left-2 text-white">
+                        Stock épuisé
+                    </span>
+                ) : null}
             </div>
             <div className="p-4 space-y-1">
                 <h3 className="font-bold text-lg truncate">{product.name}</h3>
