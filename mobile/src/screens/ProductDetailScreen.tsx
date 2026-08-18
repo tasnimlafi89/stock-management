@@ -31,13 +31,18 @@ export default function ProductDetailScreen({ route, navigation }: any) {
     return (
         <ScreenTransition>
             <ScrollView className="flex-1 bg-base100 pt-14 px-4">
-                <View className="w-full h-56 bg-base200 rounded-2xl overflow-hidden mb-4">
+                <View className="relative w-full h-56 bg-base200 rounded-2xl overflow-hidden mb-4">
                     {product.imageUrl ? (
                         <Image
                             source={{ uri: product.imageUrl }}
                             className="w-full h-full"
                             resizeMode="cover"
                         />
+                    ) : null}
+                    {product.quantity === 0 ? (
+                        <View className="absolute bottom-2 left-2 bg-red-500 rounded-full px-3 py-1">
+                            <Text className="text-white text-xs font-semibold">Stock épuisé</Text>
+                        </View>
                     ) : null}
                 </View>
 

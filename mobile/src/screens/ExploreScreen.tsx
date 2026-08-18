@@ -104,8 +104,12 @@ export default function ExploreScreen({ navigation }: any) {
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             className="flex-1 bg-white rounded-2xl border border-base300 overflow-hidden"
-                            onPress={() => navigation.navigate('ProductDetail', { product: item })}
-                        >
+                            onPress={() => navigation.navigate('ProductDetail', { product: item })}>
+                            {item.quantity === 0 ? (
+                                <View className="absolute bottom-2 left-2 bg-red-500 rounded-full px-2 py-1">
+                                    <Text className="text-white text-xs font-semibold">Stock épuisé</Text>
+                                </View>
+                            ) : null}
                             <View className="w-full h-32 bg-base200">
                                 {item.imageUrl ? (
                                     <Image
