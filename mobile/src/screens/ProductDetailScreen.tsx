@@ -40,7 +40,7 @@ export default function ProductDetailScreen({ route, navigation }: any) {
                         />
                     ) : null}
                     {product.quantity === 0 ? (
-                        <View className="absolute top-2 left-2 bg-red-500 rounded-full px-3 py-1">
+                        <View className="absolute top-2 left-2 bg-orange-500 rounded-full px-3 py-1">
                             <Text className="text-white text-xs font-semibold">Stock épuisé</Text>
                         </View>
                     ) : null}

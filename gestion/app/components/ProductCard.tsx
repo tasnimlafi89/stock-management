@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, onToggle
                     />
                 </button>
                 {product.quantity === 0 ? (
-                    <span className="badge badge-error absolute top-2 left-2 text-white">
+                    <span className="badge badge-warning absolute top-2 left-2 text-white">
                         Stock épuisé
                     </span>
                 ) : null}
