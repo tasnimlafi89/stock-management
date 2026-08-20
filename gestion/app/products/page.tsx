@@ -23,6 +23,8 @@ const page = () => {
     const [categories, setCategories] = useState<Category[]>([]);
     const [categoryFilter, setCategoryFilter] = useState<string>("");
     const [search, setSearch] = useState<string>("");
+    const [storageSearch, setStorageSearch] = useState<string>("");
+    const [ownerSearch, setOwnerSearch] = useState<string>("");
     const [sortKey, setSortKey] = useState<SortKey | null>(null);
     const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
     const [initialLoading, setInitialLoading] = useState(true)
@@ -89,6 +91,16 @@ const page = () => {
             result = result.filter((p) => p.name.toLowerCase().includes(term));
         }
 
+        if (storageSearch.trim()) {
+            const term = storageSearch.trim().toLowerCase();
+            result = result.filter((p) => (p.storageLocation || "").toLowerCase().includes(term));
+        }
+
+        if (ownerSearch.trim()) {
+            const term = ownerSearch.trim().toLowerCase();
+            result = result.filter((p) => (p.owner || "").toLowerCase().includes(term));
+        }
+
         if (sortKey) {
             result.sort((a, b) => {
                 let comparison = 0;
@@ -116,7 +128,7 @@ const page = () => {
         }
 
         return result;
-    }, [products, categoryFilter, search, sortKey, sortDirection]);
+    }, [products, categoryFilter, search, storageSearch, ownerSearch, sortKey, sortDirection]);
 
     const handleDeleteProduct = async (product: Product) => {
         const confirmDelete = confirm("Voulez-vous vraiment supprimer ce produit ?");
@@ -186,6 +198,34 @@ const page = () => {
                             placeholder="Nom du produit..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                        />
+                    </label>
+                </div>
+
+                <div>
+                    <label className="block text-sm font-semibold mb-1">Lieu de stockage</label>
+                    <label className="input input-bordered flex items-center gap-2">
+                        <Search className="w-4 h-4 opacity-50" />
+                        <input
+                            type="text"
+                            className="grow"
+                            placeholder="Lieu de stockage..."
+                            value={storageSearch}
+                            onChange={(e) => setStorageSearch(e.target.value)}
+                        />
+                    </label>
+                </div>
+
+                <div>
+                    <label className="block text-sm font-semibold mb-1">Propriétaire</label>
+                    <label className="input input-bordered flex items-center gap-2">
+                        <Search className="w-4 h-4 opacity-50" />
+                        <input
+                            type="text"
+                            className="grow"
+                            placeholder="Propriétaire..."
+                            value={ownerSearch}
+                            onChange={(e) => setOwnerSearch(e.target.value)}
                         />
                     </label>
                 </div>
