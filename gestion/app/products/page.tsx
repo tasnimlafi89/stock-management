@@ -8,7 +8,7 @@ import { deleteProduct, readCategory, readProducts } from "../action";
 import EmptyState from "../components/EmptyState";
 import ProductImage from "../components/ProductImage";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, ChevronsUpDown, Search, Trash } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronsUpDown, MapPin, Search, Trash, User } from "lucide-react";
 import { toast } from "react-toastify";
 import { Plus } from "lucide-react";
 
@@ -205,7 +205,7 @@ const page = () => {
                 <div>
                     <label className="block text-sm font-semibold mb-1">Lieu de stockage</label>
                     <label className="input input-bordered flex items-center gap-2">
-                        <Search className="w-4 h-4 opacity-50" />
+                        <MapPin className="w-4 h-4 opacity-50" />
                         <input
                             type="text"
                             className="grow"
@@ -219,7 +219,7 @@ const page = () => {
                 <div>
                     <label className="block text-sm font-semibold mb-1">Propriétaire</label>
                     <label className="input input-bordered flex items-center gap-2">
-                        <Search className="w-4 h-4 opacity-50" />
+                        <User className="w-4 h-4 opacity-50" />
                         <input
                             type="text"
                             className="grow"
